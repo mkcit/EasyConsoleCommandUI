@@ -1,4 +1,5 @@
 ﻿using CLConsoleCommandUI;
+using System.ComponentModel;
 
 namespace ConsoleCommandUIApp
 {
@@ -36,8 +37,40 @@ namespace ConsoleCommandUIApp
 			{
 				switch (commandIndex)
 				{
+					case 0:
+						AddOpr();
+						break;
+					case 1:
+						SubOpr();
+						break;
+					case 2:
+						MulOpr();
+						break;
+					case 3:
+						DivOpr();
+						break;
 				}
 			}
+		}
+
+		private static void DivOpr()
+		{
+			throw new NotImplementedException();
+		}
+
+		private static void MulOpr()
+		{
+			throw new NotImplementedException();
+		}
+
+		private static void SubOpr()
+		{
+			throw new NotImplementedException();
+		}
+
+		private static void AddOpr()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
