@@ -11,7 +11,17 @@
 				new CLConsoleCommandUI.Command("DIV TOW VALUES [/]")
 			};
 
+			CLConsoleCommandUI.ConsoleCommandUI consoleCommandUI = 
+				new CLConsoleCommandUI.ConsoleCommandUI(commands);
 
+			consoleCommandUI.CommandPressed += ConsoleCommandUI_CommandPressed;
+
+			consoleCommandUI.ShowOnScreen();
+		}
+
+		private static void ConsoleCommandUI_CommandPressed(CLConsoleCommandUI.ConsoleCommandUI source, ConsoleKey key, int commandIndex)
+		{
+			
 		}
 	}
 }
