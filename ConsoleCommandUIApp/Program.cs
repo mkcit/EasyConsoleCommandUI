@@ -20,57 +20,62 @@ namespace ConsoleCommandUIApp
 				padding: 3);
 
 			consoleCommandUI.CommandPressed += ConsoleCommandUI_CommandPressed;
-
-			
-
 			consoleCommandUI.ShowOnScreen();
 		}
 
+		delegate string Calculate(double value1, double value2);
 		private static void ConsoleCommandUI_CommandPressed(
 			ConsoleCommandUI source, ConsoleKey key, int commandIndex)
 		{
-			if (key == ConsoleKey.Escape || commandIndex == source.Commands.Length - 1)
+
+			if (key == ConsoleKey.Escape || 
+				commandIndex == source.Commands.Length - 1)
 			{
 				source.End = true;
+				Console.Clear();
 			}
 			else if (key == ConsoleKey.Enter)
 			{
 				switch (commandIndex)
 				{
 					case 0:
-						AddOpr();
+						MathOperation((x, y) => { return $"{x} + {y} = {x + y}"; });
 						break;
 					case 1:
-						SubOpr();
+						MathOperation((x, y) => { return $"{x} - {y} = {x - y}"; });
 						break;
 					case 2:
-						MulOpr();
+						MathOperation((x, y) => { return $"{x} * {y} = {x * y}"; });
 						break;
 					case 3:
-						DivOpr();
+						MathOperation((x, y) => { return $"{x} / {y} = {x / y}"; });
 						break;
 				}
 			}
 		}
 
-		private static void DivOpr()
+		private static void MathOperation(Calculate calculate)
 		{
-			throw new NotImplementedException();
+			Console.WriteLine();
+
+			Console.Clear();
+
+			Console.Write("Enter the first number: ");
+			double value1 = 0;
+			bool success = double.TryParse(Console.ReadLine(), out double x1);
+			if (success)
+				value1 = x1;
+
+			Console.Write("Enter the second number: ");
+			double value2 = 0;
+			success = double.TryParse(Console.ReadLine(), out double x2);
+			if (success)
+				value2 = x2;
+
+
+			Console.WriteLine(calculate(value1, value2));
+
 		}
 
-		private static void MulOpr()
-		{
-			throw new NotImplementedException();
-		}
-
-		private static void SubOpr()
-		{
-			throw new NotImplementedException();
-		}
-
-		private static void AddOpr()
-		{
-			throw new NotImplementedException();
-		}
 	}
 }
